@@ -8,10 +8,11 @@
 #include "IConfigurationLoader.hpp"
 #include "ConfigurationUtils.hpp"
 
-class ConfigurationLoader: public IConfigurationLoader {
+class ConfigurationLoader {
+    static constexpr char DELIMITER = ':';
 public:
     ConfigurationLoader()   = default;
-    virtual ~ConfigurationLoader()  = default;
+    ~ConfigurationLoader()  = default;
 
-    virtual bool loadConfiguration() override;
+    bool loadConfiguration(const std::string& file_path);
 };
