@@ -8,18 +8,18 @@
 #include <cstdint>
 
 // Should these declarations be inside class or not?
-static constexpr int INVALID_SOCKET         = -1;
+static constexpr int INVALID_FD         = -1;
 static constexpr uint32_t MAX_LINE_LENGTH   = 255;
 
 class FileHandler {
 
 public:
-    FileHandler(const char* file_path);
+    FileHandler(const char* file_path, const int flags);
 
     ~FileHandler();
 
     bool is_valid() const noexcept {
-        return INVALID_SOCKET != m_socket;
+        return INVALID_FD != m_fd;
     }
 
     size_t getLine(char* buf, const size_t buflen, size_t amount) const;
@@ -29,6 +29,6 @@ public:
     bool seek(size_t offset);
 
 private:
-    int m_socket;
+    int m_fd;
 };
 
