@@ -7,10 +7,11 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <fcntl.h>
 
 bool ConfigurationLoader::loadConfiguration(const std::string& file_path) {
 
-   FileHandler config_file(file_path.c_str());
+   FileHandler config_file(file_path.c_str(), O_RDONLY);
 
    if (! config_file.is_valid()) {
        return false;
